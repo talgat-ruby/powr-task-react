@@ -1,8 +1,6 @@
 import React from 'react';
 import styles from './AddButton.module.css';
 
-import {TYPE} from '>/state';
-
 import Button from '>/components/Button/';
 
 const AddButton = () => {

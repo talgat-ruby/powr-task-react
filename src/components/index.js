@@ -1,24 +1,40 @@
-import React from 'react';
-import './index.css';
+import React, {useReducer, useState} from 'react';
+import styles from './index.module.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import {StateContext, DispatcherContext, reducer, initialState} from '>/state/';
+
+import JsonFormat from '>/components/JsonFormat/';
+import Builded from '>/components/Builded/';
+
+const App = () => {
+	const [state, dispatch] = useReducer(reducer, initialState);
+	const [isJson, setIsJson] = useState(false);
+
+	return (
+		<div className={styles.container}>
+			<DispatcherContext.Provider value={dispatch}>
+				<StateContext.Provider value={state}>
+					<main className={styles.main}>
+						{isJson ? (
+							<JsonFormat
+								data={state}
+								onBuild={() => {
+									setIsJson(false);
+								}}
+							/>
+						) : (
+							<Builded
+								data={state}
+								onJson={() => {
+									setIsJson(true);
+								}}
+							/>
+						)}
+					</main>
+				</StateContext.Provider>
+			</DispatcherContext.Provider>
+		</div>
+	);
+};
 
 export default App;
