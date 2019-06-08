@@ -1,0 +1,20 @@
+.container {
+	display: flex;
+	position: relative;
+}
+
+.container .tooltip-buttons {
+	display: flex;
+	visibility: hidden;
+	position: absolute;
+	z-index: 1;
+	bottom: 90%;
+	left: -50%;
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+
+.container:hover .tooltip-buttons {
+	visibility: visible;
+	opacity: 1;
+}
