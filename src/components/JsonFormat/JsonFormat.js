@@ -3,13 +3,13 @@ import React, {Fragment} from 'react';
 import Container from '>/components/Container/';
 import Button from '>/components/Button/';
 
-const Builded = ({data}) => {
+const JsonFormat = ({data}) => {
 	return (
 		<Fragment>
-			<Button>Create JSON</Button>
+			<Button>Build</Button>
 			<Container data={data} level={0} />
 		</Fragment>
 	);
 };
 
-export default Builded;
+export default JsonFormat;
