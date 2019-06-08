@@ -12,14 +12,14 @@ const App = ({state}) => {
 			<main className={styles.main}>
 				{isJson ? (
 					<JsonFormat
-						data={state}
+						state={state}
 						onBuild={() => {
 							setIsJson(false);
 						}}
 					/>
 				) : (
 					<Builded
-						data={state}
+						state={state}
 						onJson={() => {
 							setIsJson(true);
 						}}

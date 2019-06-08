@@ -3,11 +3,11 @@ import React, {Fragment} from 'react';
 import Container from '>/components/Container/';
 import Button from '>/components/Button/';
 
-const Builded = ({data, onJson}) => {
+const Builded = ({state, onJson}) => {
 	return (
 		<Fragment>
 			<Button onClick={onJson}>Create JSON</Button>
-			<Container data={data} level={0} />
+			<Container itemsKey={state[0][0].itemsKey} />
 		</Fragment>
 	);
 };
