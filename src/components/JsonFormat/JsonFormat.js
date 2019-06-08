@@ -1,6 +1,8 @@
 import React, {Fragment} from 'react';
 import styles from './JsonFormat.module.css';
 
+import {deepenState} from '>/state/';
+
 import Button from '>/components/Button/';
 
 const JsonFormat = ({state, onBuild}) => {
@@ -12,7 +14,7 @@ const JsonFormat = ({state, onBuild}) => {
 				className={styles.textarea}
 				rows="20"
 				cols="150"
-				value={JSON.stringify(state)}
+				value={JSON.stringify(deepenState(state))}
 			/>
 		</Fragment>
 	);
