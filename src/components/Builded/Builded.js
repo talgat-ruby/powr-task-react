@@ -3,10 +3,10 @@ import React, {Fragment} from 'react';
 import Container from '>/components/Container/';
 import Button from '>/components/Button/';
 
-const Builded = ({data}) => {
+const Builded = ({data, onJson}) => {
 	return (
 		<Fragment>
-			<Button>Create JSON</Button>
+			<Button onClick={onJson}>Create JSON</Button>
 			<Container data={data} level={0} />
 		</Fragment>
 	);

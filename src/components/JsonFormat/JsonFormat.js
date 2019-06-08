@@ -1,13 +1,15 @@
 import React, {Fragment} from 'react';
+import styles from './JsonFormat.module.css';
 
-import Container from '>/components/Container/';
 import Button from '>/components/Button/';
 
-const JsonFormat = ({data}) => {
+const JsonFormat = ({data, onBuild}) => {
 	return (
 		<Fragment>
-			<Button>Build</Button>
-			<Container data={data} level={0} />
+			<Button onClick={onBuild}>Build</Button>
+			<textarea name="state" className={styles.textarea} rows="20" cols="150">
+				{JSON.stringify(data)}
+			</textarea>
 		</Fragment>
 	);
 };
