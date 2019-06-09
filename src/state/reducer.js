@@ -2,6 +2,7 @@ import TYPE from './types';
 import {generateRandomColor} from './utils';
 
 export const ACTIONS = {
+	SET_DATA: 'SET_DATA',
 	ADD_CONTAINER: 'ADD_CONTAINER',
 	ADD_BOX: 'ADD_BOX',
 	CHANGE_COLOR: 'CHANGE_COLOR'
@@ -9,6 +10,13 @@ export const ACTIONS = {
 
 export function reducer(state, action) {
 	switch (action.type) {
+		case ACTIONS.SET_DATA: {
+			return {
+				...state,
+				data: action.data,
+				nextKey: action.nextKey
+			};
+		}
 		case ACTIONS.ADD_BOX: {
 			const {data} = state;
 			const {currentKey} = action;
