@@ -3,8 +3,9 @@ import {generateRandomColor} from './utils';
 
 export const ACTIONS = {
 	SET_DATA: 'SET_DATA',
-	ADD_CONTAINER: 'ADD_CONTAINER',
 	ADD_BOX: 'ADD_BOX',
+	DELETE_BOX: 'DELETE_BOX',
+	ADD_CONTAINER: 'ADD_CONTAINER',
 	CHANGE_COLOR: 'CHANGE_COLOR'
 };
 
@@ -25,6 +26,20 @@ export function reducer(state, action) {
 				data: {
 					...data,
 					[currentKey]: [...data[currentKey], {type: TYPE.BOX}]
+				}
+			};
+		}
+		case ACTIONS.DELETE_BOX: {
+			const {data} = state;
+			const {currentKey, index} = action;
+			return {
+				...state,
+				data: {
+					...data,
+					[currentKey]: [
+						...data[currentKey].slice(0, index),
+						...data[currentKey].slice(index + 1)
+					]
 				}
 			};
 		}
