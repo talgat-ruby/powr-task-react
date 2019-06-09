@@ -1,8 +1,17 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styles from './Box.module.css';
 
-const Box = ({color = 'orange'}) => {
-	return <div className={styles.container} style={{backgroundColor: color}} />;
+import {DispatcherContext, ACTIONS} from '>/state/';
+
+const Box = ({color = 'orange', currentKey, index}) => {
+	const dispatch = useContext(DispatcherContext);
+	return (
+		<div
+			className={styles.container}
+			style={{backgroundColor: color}}
+			onClick={() => dispatch({type: ACTIONS.CHANGE_COLOR, currentKey, index})}
+		/>
+	);
 };
 
 export default Box;

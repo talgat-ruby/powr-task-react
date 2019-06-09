@@ -14,7 +14,9 @@ const Container = ({currentKey}) => {
 			case TYPE.CONTAINER:
 				return <Container key={i} currentKey={item.itemsKey} />;
 			case TYPE.BOX:
-				return <Box key={i} color={item.color} />;
+				return (
+					<Box key={i} currentKey={currentKey} index={i} color={item.color} />
+				);
 			default:
 				return null;
 		}
