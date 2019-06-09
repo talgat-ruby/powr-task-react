@@ -1,9 +1,8 @@
 import React, {useContext} from 'react';
 import styles from './Container.module.css';
 
-import {TYPE} from '>/state';
+import {StateContext, TYPE} from '>/state/';
 
-import {StateContext} from '>/state/';
 import Box from '>/components/Box/';
 import AddButton from '>/components/AddButton/';
 

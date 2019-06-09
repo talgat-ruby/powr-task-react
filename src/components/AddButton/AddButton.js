@@ -1,9 +1,8 @@
 import React, {useContext} from 'react';
 import styles from './AddButton.module.css';
 
-import {ACTIONS} from '>/state';
+import {DispatcherContext, ACTIONS} from '>/state/';
 
-import {DispatcherContext} from '>/state/';
 import Button from '>/components/Button/';
 
 const AddButton = ({itemsKey}) => {
