@@ -7,13 +7,27 @@ export const ACTIONS = {
 
 export function reducer(state, action) {
 	switch (action.type) {
+		case ACTIONS.ADD_BOX:
+			return {
+				...state,
+				data: {
+					...state.data,
+					[action.itemsKey]: [...state.data[action.itemsKey], {type: TYPE.BOX}]
+				}
+			};
 		case ACTIONS.ADD_CONTAINER:
 			return {
 				...state,
-				items: [...state.items, {type: TYPE.CONTAINER, items: []}]
+				data: {
+					...state.data,
+					[action.itemsKey]: [
+						...state.data[action.itemsKey],
+						{type: TYPE.CONTAINER, itemsKey: state.nextKey}
+					],
+					[state.nextKey]: []
+				},
+				nextKey: state.nextKey + 1
 			};
-		case ACTIONS.ADD_BOX:
-			return {...state, items: [...state.items, {type: TYPE.BOX}]};
 		default:
 			return state;
 	}

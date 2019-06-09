@@ -1,15 +1,25 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styles from './AddButton.module.css';
 
+import {ACTIONS} from '>/state';
+
+import {DispatcherContext} from '>/state/';
 import Button from '>/components/Button/';
 
-const AddButton = () => {
+const AddButton = ({itemsKey}) => {
+	const dispatch = useContext(DispatcherContext);
 	return (
 		<div className={styles.container}>
 			<Button>Add</Button>
 			<div className={styles['tooltip-buttons']}>
-				<Button>Box</Button>
-				<Button>Container</Button>
+				<Button onClick={() => dispatch({type: ACTIONS.ADD_BOX, itemsKey})}>
+					Box
+				</Button>
+				<Button
+					onClick={() => dispatch({type: ACTIONS.ADD_CONTAINER, itemsKey})}
+				>
+					Container
+				</Button>
 			</div>
 		</div>
 	);

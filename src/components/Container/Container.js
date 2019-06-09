@@ -24,7 +24,7 @@ const Container = ({itemsKey}) => {
 	return (
 		<div className={styles.container}>
 			{state[itemsKey].map(renderItem)}
-			<AddButton />
+			<AddButton itemsKey={itemsKey} />
 		</div>
 	);
 };
