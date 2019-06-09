@@ -23,21 +23,29 @@ function normalize(currentKey, state, items = []) {
 	return key;
 }
 
-export function deepenState(flat) {
+export function deepenState(flat, skipKey) {
 	if (Array.isArray(flat[0])) {
-		return getItems(flat)[0];
+		return getItems(flat, skipKey)[0];
 	}
 }
 
-function getItems(flat, key = 0) {
+function getItems(flat, skipKey, key = 0) {
 	const flatItems = flat[key];
-	return flatItems.map(item => {
-		if (item.type === TYPE.CONTAINER && item.itemsKey) {
-			const items = getItems(flat, item.itemsKey);
-			return {type: item.type, items};
+	const items = [];
+
+	for (const item of flatItems) {
+		if (
+			item.type === TYPE.CONTAINER &&
+			item.itemsKey &&
+			item.itemsKey !== skipKey
+		) {
+			const nextItems = getItems(flat, skipKey, item.itemsKey);
+			items.push({type: item.type, items: nextItems});
+		} else if (item.type === TYPE.BOX) {
+			items.push(item);
 		}
-		return item;
-	});
+	}
+	return items;
 }
 
 export function generateRandomColor() {

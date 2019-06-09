@@ -1,5 +1,5 @@
 import TYPE from './types';
-import {generateRandomColor} from './utils';
+import {generateRandomColor, deepenState, flattenState} from './utils';
 
 export const ACTIONS = {
 	SET_DATA: 'SET_DATA',
@@ -57,6 +57,14 @@ export function reducer(state, action) {
 					[nextKey]: []
 				},
 				nextKey: nextKey + 1
+			};
+		}
+		case ACTIONS.DELETE_CONTAINER: {
+			const {data} = state;
+			const {currentKey} = action;
+			return {
+				...state,
+				...flattenState(deepenState(data, currentKey))
 			};
 		}
 		case ACTIONS.CHANGE_COLOR: {

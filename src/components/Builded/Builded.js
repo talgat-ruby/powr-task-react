@@ -7,7 +7,7 @@ const Builded = ({state, onJson}) => {
 	return (
 		<Fragment>
 			<Button onClick={onJson}>Create JSON</Button>
-			<Container currentKey={state[0][0].itemsKey} />
+			<Container currentKey={state[0][0].itemsKey} notRemovable />
 		</Fragment>
 	);
 };
