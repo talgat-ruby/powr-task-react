@@ -7,11 +7,11 @@ import * as serviceWorker from './serviceWorker';
 import {StateContext, DispatcherContext, reducer, initialState} from '>/state/';
 
 const AppWithStore = () => {
-	const [state, dispatch] = useReducer(reducer, initialState);
+	const [store, dispatch] = useReducer(reducer, initialState);
 	return (
 		<DispatcherContext.Provider value={dispatch}>
-			<StateContext.Provider value={state}>
-				<App state={state} />
+			<StateContext.Provider value={store.data}>
+				<App state={store.data} />
 			</StateContext.Provider>
 		</DispatcherContext.Provider>
 	);
