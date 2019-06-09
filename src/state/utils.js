@@ -6,7 +6,7 @@ export function flattenState(deep = {}) {
 	if (deep.type === TYPE.CONTAINER && Array.isArray(deep.items)) {
 		nextKey = normalize(nextKey, state, [deep]) + 1;
 	}
-	return {state, nextKey};
+	return {data: state, nextKey};
 }
 
 function normalize(currentKey, state, items = []) {
